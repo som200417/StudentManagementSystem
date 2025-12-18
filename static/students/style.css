@@ -1,0 +1,719 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f7f7f7;
+}
+
+header {
+    background-color: #2c3e50;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+/* Buttons inside forms */
+/* Center the form in the page */
+.centered-form {
+    max-width: 400px;          /* width of the form card */
+    margin: 80px auto;         /* center vertically with some spacing */
+    padding: 30px 25px;        /* internal padding */
+    background: #ffffff;       /* white card */
+    border-radius: 10px;       /* rounded corners */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* subtle shadow */
+    text-align: center;        /* center headings and buttons */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form fields styling inside the card */
+.centered-form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* space between inputs */
+}
+
+.centered-form form p {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* Input fields */
+.centered-form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+/* Buttons stacked vertically */
+.form-buttons {
+    display: flex;
+    flex-direction: column;   /* stack */
+    align-items: center;      /* center horizontally */
+    gap: 12px;                /* spacing between buttons */
+    margin-top: 20px;
+}
+
+.form-buttons .btn {
+    width: 180px;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.form-buttons .btn-save {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.form-buttons .btn-save:hover {
+    background-color: #45a049;
+}
+
+.form-buttons .btn-cancel {
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-buttons .btn-cancel:hover {
+    background-color: #c0392b;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color:#4CAF50 ;
+    text-decoration: none;
+    color: white;
+
+}
+
+/* Top Right Button */
+.top_right_button .btn {
+    background-color: #e74c3c;
+    padding: 8px 14px;
+    font-weight: bolder;
+    font-size: large;
+    color:white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    font-weight: bold;
+}
+
+.top_right_button .btn:hover {
+    background-color: #c0392b;
+}
+
+/* Main Content */
+main {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #2c3e50;
+    color: white;
+    margin-top: 40px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+
+form {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search input[type="search"],
+.sorting select {
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+.add{
+    
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+li {
+    background: #fff;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #4CAF50;
+}
+
+li a {
+    margin-left: 10px;
+    color: #007bff;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #007bff;
+    margin: 0 5px;
+}
+
+.pagination a:hover {
+    text-decoration: underline;
+}
+
+.current {
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+
+
+/* CENTER BOX WRAPPER */
+.center-box {
+    max-width: 500px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+/* FORM TITLE */
+.center-box h1 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* FORM CONTAINER */
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* FORM INPUTS */
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+/* FORM BUTTON */
+form button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.errorlist {
+    font-size: 18px !important;   /* Increase font size */
+    color: red;                   /* Make errors clearly visible */
+    margin-bottom: 8px;
+}
+
+.errorlist li {
+    font-size: 18px !important;   /* Increase each error line */
+}
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Form <p> wrapper from Django form.as_p */
+form p {
+    text-align: left;
+    margin-bottom: 10px;
+}
+.sorting select {
+    width: auto;
+    min-width: 120px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+/* STUDENT TABLE */
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.student-table th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.student-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.student-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.student-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* ACTION BUTTONS */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 6px 12px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.edit-btn {
+    background-color: #3498db;
+}
+
+.edit-btn:hover {
+    background-color: #217dbb;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+    .student-table th,
+    .student-table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    form {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+/* CHANGE PASSWORD PAGE */
+.change-password-box {
+    max-width: 450px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.change-password-box h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Styling the form inside the box */
+.change-password-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.change-password-box form p {
+    text-align: left;
+}
+
+/* Input fields styling */
+.change-password-box input[type="password"],
+.change-password-box input[type="text"],
+.change-password-box input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+/* Submit button */
+.change-password-box button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.change-password-box button:hover {
+    background-color: #45a049;
+}
+
+form p small,
+.helptext,
+.errorlist li {
+    font-size: 5px;
+    color: #666;
+}
+
+/* Error messages specifically */
+.errorlist {
+    padding-left: 0;
+    margin: 5px 0;
+}
+
+.errorlist li {
+    color: #e74c3c;
+    list-style: none;
+}
+/* PROFESSIONAL PROFILE CARD */
+.profile-box {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 35px 40px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.profile-box h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.profile-box p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* PROFILE LINKS */
+.profile-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    
+}
+
+.profile-links li {
+    
+    margin: 14px 0;
+}
+
+.profile-links a {
+    display: inline-block;
+    width: 70%;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    background: #f4f6f7;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid #e1e4e8;
+    transition: 0.25s ease;
+}
+
+.profile-links a:hover {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-decoration: none;
+}
+/* Professional Centered Home Container */
+.home-container {
+    max-width: 500px;            /* Compact and centered */
+    margin: 60px auto;           /* Center vertically with some top spacing */
+    padding: 40px 30px;          /* More padding inside */
+    background: #ffffff;         /* White card */
+    border-radius: 12px;         /* Rounded corners */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* Soft shadow */
+    text-align: center;          /* Center all text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;                   /* Space between items */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Headings */
+.home-container h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Paragraphs */
+.home-container p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Links like buttons */
+.home-container .btn-link {
+    display: inline-block;
+    width: 220px;                /* Fixed width for uniform buttons */
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: #4CAF50;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: 0.3s ease, transform 0.2s ease;
+}
+
+.home-container .btn-link:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+/* Optional: space for multiple buttons */
+.home-container .home-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+}
+/* COURSE PAGE CONTAINER */
+.course-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* COURSE TITLE */
+.course-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* COURSE TABLE */
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.course-table th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.course-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+
+.course-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.course-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.add-course-btn {
+    display: block;          /* Makes centering easy */
+    width: fit-content;      /* Button stays compact */
+    margin: 25px auto 0;     /* Auto = center horizontally */
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.add-course-btn:hover {
+    background-color: #217dbb;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .home-container {
+        margin: 40px 20px;
+        padding: 30px 20px;
+    }
+
+    .home-container .btn-link {
+        width: 80%;
+    }
+}
+
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 600px) {
+    .profile-box {
+        padding: 25px;
+    }
+
+    .profile-links a {
+        width: 100%;
+        font-size: 15px;
+    }
+}

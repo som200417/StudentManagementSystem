@@ -1,0 +1,49 @@
+{% extends 'students/base.html' %}
+{% block content %}
+
+<div class="container mt-5" style="max-width: 700px;">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Add Teacher</h4>
+        </div>
+
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Name -->
+                <div class="mb-3">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                </div>
+
+                <!-- Subjects -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">
+                        {{ form.subjects.label }}
+                    </label>
+
+                    <div class="checkbox-box">
+                        <div class="checkbox-grid">
+                            {% for checkbox in form.subjects %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }}
+                                    <label class="form-check-label">
+                                        {{ checkbox.choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-success">Save</button>
+                    <a href="{% url 'teacher_list' %}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

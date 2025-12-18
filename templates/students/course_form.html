@@ -1,0 +1,64 @@
+{% extends 'students/base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+            <h3>Add New Course</h3>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Display non-field errors -->
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                <!-- Name Field -->
+                <div class="mb-3">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                        <div class="text-danger">
+                            {{ form.name.errors|striptags }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Duration Field -->
+                <div class="mb-3">
+                    {{ form.duration.label_tag }}
+                    {{ form.duration }}
+                    {% if form.duration.errors %}
+                        <div class="text-danger">
+                            {{ form.duration.errors|striptags }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Fee Field -->
+                <div class="mb-3">
+                    {{ form.fee.label_tag }}
+                    {{ form.fee }}
+                    {% if form.fee.errors %}
+                        <div class="text-danger">
+                            {{ form.fee.errors|striptags }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <a href="{% url 'course_list' %}" class="btn btn-secondary">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'students/base.html' %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">
+        Import CSV
+    </button>
+</form>
+
+{% if success_count %}
+    <p class="text-success">
+        Successfully imported {{ success_count }} records
+    </p>
+{% endif %}
+
+{% if errors %}
+    <h4 class="text-danger mt-3">Errors</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Row</th>
+                <th>Error</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for err in errors %}
+            <tr>
+                <td>{{ err.row }}</td>
+                <td>{{ err.error }}</td>
+                <td>{{ err.data }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endblock %}

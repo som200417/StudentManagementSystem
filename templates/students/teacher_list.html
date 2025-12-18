@@ -1,0 +1,59 @@
+{% extends 'students/base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">Teachers</h2>
+
+    <!-- Teacher Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Subjects</th>
+                    <th>Students</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for teacher in teachers %}
+                <tr>
+                    <td>{{ teacher.name }}</td>
+                    <td>
+                        {% for sub in teacher.subjects.all %}
+                            {{ sub.name }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                            <span class="text-muted">No subjects</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for s in teacher.student_set.all %}
+                            {{ s.name }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                            <span class="text-muted">No students</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a href="{% url 'teacher_edit' teacher.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted">No teachers yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{% url 'teacher_add' %}" class="btn btn-primary">
+            Add Teacher
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

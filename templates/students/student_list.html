@@ -1,0 +1,154 @@
+{% extends 'students/base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h1 class="mb-4 text-center">Student List</h1>
+    <div class="d-flex justify-content-between mb-3">
+    <h3>Students</h3>
+
+    <div>
+           {% if user.is_staff %}
+        <a href="{% url 'import_students_csv' %}" class="btn btn-primary">
+            Import CSV
+        </a>
+            {% endif %}
+        <a href="{% url 'export_students_csv' %}" class="btn btn-success">
+            Export CSV
+        </a>
+    </div>
+</div>
+
+    <!-- Row for Search + Sort + Add Button -->
+    <div class="row mb-4">
+
+        <!-- Sorting -->
+        <div class="col-md-3">
+            <form method="get">
+                <input type="hidden" name="q" value="{{ query }}">
+                <div class="input-group">
+                    <select name="sort_by" class="form-select">
+                        <option value="name" {% if sort_by == 'name' %}selected{% endif %}>Name</option>
+                        <option value="age" {% if sort_by == 'age' %}selected{% endif %}>Age</option>
+                    </select>
+                    <button class="btn btn-primary">Sort</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Search -->
+        <div class="col-md-6">
+            <form method="get">
+                <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                <div class="input-group">
+                    <input type="search" class="form-control" name="q" value="{{ query }}" placeholder="Search student...">
+                    <button class="btn btn-success">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Add Student (permissions) -->
+        <div class="col-md-3 text-end">
+            {% if perms.students.add_student %}
+            <a href="{% url 'student_create' %}" class="btn btn-primary">
+                Add Student
+            </a>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <!-- Student Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Phone</th>
+                    <th>Course</th>
+                    <th>Teachers</th>
+
+                    {% if perms.students.change_student or perms.students.can_update_student or perms.students.delete_student %}
+                        <th>Actions</th>
+                    {% endif %}
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.phone_number }}</td>
+                    <td>{{ student.course.name|default:"No course" }}</td>
+
+                    <td>
+                        {% if student.teachers.all %}
+                            {% for t in student.teachers.all %}
+                                {{ t.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <span class="text-muted">No teacher</span>
+                        {% endif %}
+                    </td>
+
+                    {% if perms.students.change_student or perms.students.can_update_student or perms.students.delete_student %}
+                    <td>
+                        <div class="btn-group">
+                            {% if perms.students.change_student or perms.students.can_update_student %}
+                                <a href="{% url 'student_update' student.id %}" class="btn btn-warning btn-sm">Edit</a>
+                            {% endif %}
+                            {% if perms.students.delete_student %}
+                                <a href="{% url 'student_delete' student.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            {% endif %}
+                        </div>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    {% if is_pagination %}
+    <nav>
+        <ul class="pagination justify-content-center">
+
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1&q={{ query }}&sort_by={{ sort_by }}">« First</a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}&q={{ query }}&sort_by={{ sort_by }}">Previous</a>
+                </li>
+            {% endif %}
+
+            <li class="page-item disabled">
+                <span class="page-link">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+            </li>
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}&q={{ query }}&sort_by={{ sort_by }}">Next</a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&q={{ query }}&sort_by={{ sort_by }}">Last »</a>
+                </li>
+            {% endif %}
+
+    </nav>
+    
+        </ul>
+    {% endif %}
+
+</div>
+
+{% endblock %}

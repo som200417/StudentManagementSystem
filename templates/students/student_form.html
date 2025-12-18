@@ -1,0 +1,74 @@
+{% extends 'students/base.html' %}
+{% block content %}
+
+<div class="container mt-5" style="max-width: 800px;">
+    <div class="card shadow">
+        
+        <!-- Header (matching other pages) -->
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Student Form</h4>
+        </div>
+
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.age.label_tag }}
+                    {{ form.age }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.phone_number.label_tag }}
+                    {{ form.phone_number }}
+                </div>
+
+                <!-- Course -->
+                <div class="mb-3">
+                    {{ form.course.label_tag }}
+                    {{ form.course }}
+                </div>
+
+                <!-- Teachers (2-column checkbox layout) -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">
+                        {{ form.teachers.label }}
+                    </label>
+
+                    <div class="checkbox-box">
+                        <div class="checkbox-grid">
+                            {% for checkbox in form.teachers %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }}
+                                    <label class="form-check-label">
+                                        {{ checkbox.choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Centered Save Button -->
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary px-5">
+                        Save
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

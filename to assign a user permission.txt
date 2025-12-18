@@ -1,0 +1,8 @@
+Assign a user to the group
+
+from django.contrib.auth.models import User, Group
+
+user = User.objects.get(username='john')
+group = Group.objects.get(name='Student Managers')
+
+group.user_set.add(user)
